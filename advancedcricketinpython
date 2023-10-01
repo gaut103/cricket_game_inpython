@@ -1,0 +1,27 @@
+import random
+
+def play_hand_cricket():
+    print("Welcome to Hand Cricket!")
+    player1 = input("Enter the name of Player 1: ")
+    player2 = input("Enter the name of Player 2: ")
+
+    while True:
+        print(f"{player1}, you are the batter. {player2}, you are the bowler.")
+        input(f"{player2}, press Enter to bowl...")
+
+        bowler_choice = random.randint(1, 6)
+        print(f"{player2} bowls: {bowler_choice}")
+
+        batter_choice = int(input(f"{player1}, choose a number between 1 and 6: "))
+        print(f"{player1} bats: {batter_choice}")
+
+        if batter_choice == bowler_choice:
+            print(f"{player1} is out!")
+            break
+        else:
+            print(f"{player1} scores {batter_choice} runs.")
+
+    print(f"{player2} wins!")
+
+if __name__ == "__main__":
+    play_hand_cricket()
