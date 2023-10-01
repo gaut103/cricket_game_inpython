@@ -1,0 +1,51 @@
+import random
+
+def play_hand_cricket():
+    print("Welcome to Hand Cricket!")
+    player1 = input("Enter the name of Player 1: ")
+    player2 = input("Enter the name of Player 2: ")
+
+    rounds = int(input("Enter the number of rounds: "))
+    player1_score = 0
+    player2_score = 0
+
+    for round_num in range(1, rounds + 1):
+        print(f"\nRound {round_num}:")
+        toss_winner = random.choice([player1, player2])
+        toss_loser = player1 if toss_winner == player2 else player2
+
+        print(f"{toss_winner} wins the toss and chooses to bat.")
+        batter = toss_winner
+        bowler = toss_loser
+
+        while True:
+            input(f"{bowler}, press Enter to bowl...")
+            bowler_choice = random.randint(1, 6)
+            print(f"{bowler} bowls: {bowler_choice}")
+
+            batter_choice = int(input(f"{batter}, choose a number between 1 and 6: "))
+            print(f"{batter} bats: {batter_choice}")
+
+            if batter_choice == bowler_choice:
+                print(f"{batter} is out!")
+                break
+            else:
+                player1_score += batter_choice if batter == player1 else 0
+                player2_score += batter_choice if batter == player2 else 0
+                print(f"{batter} scores {batter_choice} runs.")
+
+            batter, bowler = bowler, batter
+
+        print(f"\nEnd of Round {round_num}:")
+        print(f"{player1}: {player1_score} runs")
+        print(f"{player2}: {player2_score} runs")
+
+    if player1_score > player2_score:
+        print(f"{player1} wins!")
+    elif player2_score > player1_score:
+        print(f"{player2} wins!")
+    else:
+        print("It's a draw!")
+
+if __name__ == "__main__":
+    play_hand_cricket()
